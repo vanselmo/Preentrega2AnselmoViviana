@@ -1,29 +1,56 @@
-import { Button } from 'antd'
-import { useState } from 'react'
+// ItemListContainer.jsx
+import React, { useEffect, useState } from 'react';
+import FoodCard from './FoodCard.jsx';
 
-function ItemListContainer(props) {
+function ItemListContainer({ category }) {
+    const [meals, setMeals] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const [counter, setCounter] = useState(0)
+    useEffect(() => {
+        setLoading(true);
 
-    const handleClick = () => {
-        setCounter(counter + 1)
-    }
+        const apiID = '<APPID>';
+        const apiKey = '<APIKEY>';
+
+        const fetchMeals = async () => {
+            try {
+                let apiUrl = `https://api.edamam.com/api/food-database/v2/parser?app_id=${apiID}&app_key=${apiKey}`;
+
+                if(category) {
+                    apiUrl = `https://api.edamam.com/api/food-database/v2/parser?q=${category}&app_id=${apiID}&app_key=${apiKey}`;   
+                }
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setMeals(data.hints);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchMeals();
+
+    }, [category]);
 
     return (
-        <div className="bg-white border-2 border-gray-100 rounded-lg p-4 hover:scale-105 transition">
-            <img className='mb-4' src="./img/brownie.jpg" alt="card-image" />
-            <h2 className='my-2 font-bold text-sm text-center'>{props.name}</h2>
-            <p className='text-center mb-2'>{props.price}</p>
-            <div className='flex items-center justify-center gap-x-2'>
-                <Button>Ver más</Button>
-                <Button className='text-green-500 font-bold'>Comprar</Button>
-            </div>
-            <button onClick={handleClick}>
-                Like
-                <span>{counter}</span>
-            </button>
+        <div>
+            <h1>Comidas</h1>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+                    {meals.map((meal, index) => (
+                        
+                        <FoodCard key={index} meal={meal.food} />
+                    ))}
+                </section>
+            )}
         </div>
-    )
+    );
 }
 
 export default ItemListContainer;

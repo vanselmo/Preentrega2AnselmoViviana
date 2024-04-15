@@ -1,19 +1,18 @@
 import React from 'react'
 import ItemListContainer from './ItemListContainer.jsx'
-import Pages from './Pages.jsx'
+import { Routes, Route } from 'react-router-dom'
+import ItemDetailContainer from './ItemDetailContainer.jsx'
 
 function Main() {
     return (
-        <Pages title="Nuestros Productos">
-            <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-                <ItemListContainer
-                    name="Brownie"
-                    price={200} />
-                <ItemListContainer />
-                <ItemListContainer />
-                <ItemListContainer />
-            </section>
-        </Pages>
+        <main className="p-4 grow">
+
+            <Routes>
+                <Route path='/' element={<ItemListContainer />} />
+                <Route path='/category/:category' element={<ItemListContainer />} />
+                <Route path='/item/:foodId' element={<ItemDetailContainer />} />
+            </Routes>
+        </main>
     )
 }
 
