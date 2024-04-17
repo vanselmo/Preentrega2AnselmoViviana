@@ -1,0 +1,84 @@
+{
+    "meals": [
+      {
+        "id": 1,
+        "name": "Ensalada de quinoa",
+        "category": "vegan",
+        "photo": "/img/ensalada_quinoa.jpg",
+        "thumbnail": "/img/thumbnail/ensalada_quinoa_thumbnail.jpg",
+        "price": 10.99
+      },
+      {
+        "id": 2,
+        "name": "Hamburguesa de ternera",
+        "category": "burger",
+        "photo": "/img/hamburguesa_ternera.jpg",
+        "thumbnail": "/img/thumbnail/hamburguesa_ternera_thumbnail.jpg",
+        "price": 8.99
+      },
+      {
+        "id": 3,
+        "name": "Sushi de salmón",
+        "category": "sushi",
+        "photo": "/img/sushi_salmon.jpg",
+        "thumbnail": "/img/thumbnail/sushi_salmon_thumbnail.jpg",
+        "price": 12.99
+      },
+      {
+        "id": 4,
+        "name": "Tacos de jackfruit",
+        "category": "vegan",
+        "photo": "/img/tacos_jackfruit.jpg",
+        "thumbnail": "/img/thumbnail/tacos_jackfruit_thumbnail.jpg",
+        "price": 9.99
+      },
+      {
+        "id": 5,
+        "name": "Pasta sin gluten",
+        "category": "glutenfree",
+        "photo": "/img/pasta_sin_gluten.jpg",
+        "thumbnail": "/img/thumbnail/pasta_sin_gluten_thumbnail.jpg",
+        "price": 11.99
+      },
+      {
+        "id": 6,
+        "name": "Sopa de verduras",
+        "category": "vegan",
+        "photo": "/img/sopa_verduras.jpg",
+        "thumbnail": "/img/thumbnail/sopa_verduras_thumbnail.jpg",
+        "price": 7.99
+      },
+      {
+        "id": 7,
+        "name": "Filete de salmón",
+        "category": "fillet",
+        "photo": "/img/filete_salmon.jpg",
+        "thumbnail": "/img/thumbnail/filete_salmon_thumbnail.jpg",
+        "price": 14.99
+      },
+      {
+        "id": 8,
+        "name": "Ensalada César",
+        "category": "non-vegan-salad",
+        "photo": "/img/ensalada_cesar.jpg",
+        "thumbnail": "/img/thumbnail/ensalada_cesar_thumbnail.jpg",
+        "price": 9.49
+      },
+      {
+        "id": 9,
+        "name": "Pizza vegetariana",
+        "category": "vegan",
+        "photo": "/img/pizza_vegetariana.jpg",
+        "thumbnail": "/img/thumbnail/pizza_vegetariana_thumbnail.jpg",
+        "price": 13.49
+      },
+      {
+        "id": 10,
+        "name": "Tarta de chocolate sin gluten",
+        "category": "glutenfree",
+        "photo": "/img/tarta_chocolate_sin_gluten.jpg",
+        "thumbnail": "/img/thumbnail/tarta_chocolate_sin_gluten_thumbnail.jpg",
+        "price": 8.99
+      }
+    ]
+  }

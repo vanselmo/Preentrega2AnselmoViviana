@@ -8,17 +8,13 @@ function ItemDetailContainer() {
 
     useEffect(() => {
         setLoading(true);
-        const apiID = '<APPID>';
-        const apiKey = '<APIKEY>';
-        console.log(foodId);
+
         const fetchMealDetail = async () => {
             try {
-                const response = await fetch(`https://api.edamam.com/api/food-database/v2/parser?foodId=${foodId}&app_id=${apiID}&app_key=${apiKey}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+                const response = await fetch('../../meals.json');
                 const data = await response.json();
-                setMealDetail(data.hints[0].food); // Considerando que la API devuelve un solo resultado para la comida especificada
+                const meal = data.meals.find((meal) => meal.id === parseInt(foodId));
+                setMealDetail(meal);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -30,17 +26,23 @@ function ItemDetailContainer() {
     }, [foodId]);
 
     return (
-        <div>
-            {loading ? (
-                <p>Cargando...</p>
-            ) : (
-                <div>
-                    <h1>{mealDetail.label}</h1>
-                    <img src={mealDetail.image} alt="Imagen de comida" />
-                    <p>Precio: ${Math.floor(Math.random() * 20) + 5}</p>
+            <div className="flex justify-center">
+
+
+                <div className="bg-white rounded-lg overflow-hidden shadow-lg max-w-md w-full">
+                    {loading ? (
+                        <p className="p-4 text-center">Cargando...</p>
+                    ) : (
+                        <div>
+                            <img className="w-full object-cover" src={mealDetail.photo} alt="Imagen de comida" />
+                            <div className="p-4">
+                                <h1 className="text-2xl font-semibold mb-2">{mealDetail.name}</h1>
+                                <p className="text-gray-700 mb-2">Precio: ${mealDetail.price}</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
-        </div>
+            </div>
     );
 }
 
